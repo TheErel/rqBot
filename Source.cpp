@@ -69,28 +69,26 @@ void accIdfunc()
 
 	switch (idcur)
 	{
-		// Granas
-	case 3156366: SetWindowText(hGame, "gstone3@mail.ru");
+		// Гранас ID аккаунтов greysba@gmail.com
+	case 3388832: SetWindowText(hGame, "1");
 		break;
-	case 3156368: SetWindowText(hGame, "gstone4@mail.ru");
+	case 3388833: SetWindowText(hGame, "2");
 		break;
-	case 3156371: SetWindowText(hGame, "gstone6@mail.ru");
+	case 3409453: SetWindowText(hGame, "3");
 		break;
-	case 3156372: SetWindowText(hGame, "gstone7@mail.ru");
+	case 3409454: SetWindowText(hGame, "4");
 		break;
-	case 3156373: SetWindowText(hGame, "gstone8@mail.ru");
+	case 3409455: SetWindowText(hGame, "5");
 		break;
-	case 3156374: SetWindowText(hGame, "gstone9@mail.ru");
+	case 3409456: SetWindowText(hGame, "6");
 		break;
-	case 3156376: SetWindowText(hGame, "gstone10@mail.ru");
+	case 3409457: SetWindowText(hGame, "7");
 		break;
-	case 3186928: SetWindowText(hGame, "gstone11@mail.ru");
+	case 3409458: SetWindowText(hGame, "8");
 		break;
-	case 3186929: SetWindowText(hGame, "gstone12@mail.ru");
+	case 3409459: SetWindowText(hGame, "9");
 		break;
-	case 3186930: SetWindowText(hGame, "gstone13@mail.ru");
-		break;
-	case 3186932: SetWindowText(hGame, "gstone15@mail.ru");
+	case 3409460: SetWindowText(hGame, "10");
 		break;
 	default: SetWindowText(hGame, "Royal Quest");
 		break;
@@ -142,7 +140,7 @@ DWORD WINAPI GameThread(LPVOID lParam)
 	{
 		accIdfunc();
 		std::fstream RQBotSettings;
-		std::string pathRqBotSettings = ("C:\\Users\\greys\\source\\repos\\rqBot\\rqHelp.txt");
+		std::string pathRqBotSettings = ("E:\\rqHelp.txt");
 		RQBotSettings.open(pathRqBotSettings);
 		RQBotSettings >> gCordX >> gCordY >> BotStatus;
 		RQBotSettings.close();
