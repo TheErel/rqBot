@@ -8,22 +8,23 @@
 
 WNDPROC g_oldWndProc;
 HWND	hGame = FindWindow(0, "Royal Quest");
-int		mainOffset = 0x7F7CA8;
+int		mainOffset = 0x7F7D08;
 int		CurrentWID = 0;
 int		old_protect = 0;
 float	gCordX = 0;
 float	gCordY = 0;
 DWORD	PlayerPosX = DeRef(DeRef((DWORD)GetModuleHandleA(0) + mainOffset) + 0x4) + 0x23C;
 DWORD	PlayerPosY = DeRef(DeRef((DWORD)GetModuleHandleA(0) + mainOffset) + 0x4) + 0x240;
+DWORD   gameProtection = DeRef((DWORD)GetModuleHandleA(0) + 0x39EBAA);
 float	MCord = 10.0f;
 float	MEvent = 5.0f;
 DWORD	PlayerHealth = DeRef(DeRef((DWORD)GetModuleHandle(0) + mainOffset) + 0x4) + 0x204;
 DWORD	MouseCord = DeRef(DeRef((DWORD)GetModuleHandle(0) + mainOffset) + 0x4) + 0x208;
 DWORD	MouseEvent = DeRef(DeRef((DWORD)GetModuleHandle(0) + mainOffset) + 0x4) + 0x20C;
-DWORD	accIdptr = ((DWORD)GetModuleHandle(0)) + 0x7FA124;
+DWORD	accIdptr = ((DWORD)GetModuleHandle(0)) + 0x7FA184;
 DWORD	WordlID = ((DWORD)GetModuleHandle(0)) + 0x6B0304;
-DWORD	AdrSpeed = ((DWORD)GetModuleHandle(0)) + 0xB4B7C;
-BOOL	BotStatus = 1, SpeedHack = 0, savePos = 0;																						// 40-49 991346588; 1387840084 204.1203766 124.2634048
+DWORD	AdrSpeed = ((DWORD)GetModuleHandle(0)) + 0xB4E1C;
+BOOL	BotStatus = 1, SpeedHack = 0, savePos = 0;					// 40-49 991346588; 1387840084 204.1203766 124.2634048
 BOOL	panicKey = 0;
 
 
@@ -90,7 +91,15 @@ void accIdfunc()
 		break;
 	case 3409460: SetWindowText(hGame, "10");
 		break;
-	default: SetWindowText(hGame, "Royal Quest");
+	case 3411802: SetWindowText(hGame, "11");
+		break;
+	case 3411804: SetWindowText(hGame, "12");
+		break;
+	case 3411805: SetWindowText(hGame, "13");
+		break;
+	case 3411806: SetWindowText(hGame, "14");
+		break;
+	case 3411807: SetWindowText(hGame, "15");
 		break;
 	}
 }
@@ -138,6 +147,9 @@ DWORD WINAPI GameThread(LPVOID lParam)
 	for (;; Sleep(200))
 
 	{
+		int newGameProtection = 3505907059;
+		memWrite(gameProtection, &newGameProtection, 4);
+
 		accIdfunc();
 		std::fstream RQBotSettings;
 		std::string pathRqBotSettings = ("E:\\rqHelp.txt");
